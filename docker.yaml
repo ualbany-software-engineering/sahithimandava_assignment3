@@ -1,0 +1,20 @@
+ version: "3"
+
+services:
+  reactlogin:
+    build:
+      context: ./reactlogin
+      dockerfile: DockerFile.react
+    image:   logo:latest
+    ports:
+      - "3000:3000"   
+    depends_on:
+      - db
+     db:
+    volumes:
+      - profile_db:/data/db
+    image: mongo:latest
+    ports:
+      - "27017:27017" 
+volumes:
+   profile_db:
